@@ -1,3 +1,14 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+.godot/
+*.import
+*.tmp
+
+# Godot web exports
+*.html
+*.wasm
+*.worklet.js
+
+# Exported builds
+MisinformationMadness_v*
