@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dqmat2xbdi4dj"]
+
+[ext_resource type="FontFile" uid="uid://ciy1nqvykbbpa" path="res://Poppins-ExtraBold.ttf" id="1_qbe5o"]
+[ext_resource type="Script" uid="uid://cmu3gvc6tt6a2" path="res://question.gd" id="1_wv3x4"]
+[ext_resource type="Texture2D" uid="uid://d044gplbmctd7" path="res://Post.png" id="3_emrvn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0, 0.7607843, 0.09019608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf5fn"]
+bg_color = Color(1, 0.21960784, 0.07058824, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Question" type="Control" unique_id=1202306231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wv3x4")
+
+[node name="Background" type="ColorRect" parent="." unique_id=675879335]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="Question" type="Label" parent="." unique_id=426897034]
+layout_mode = 0
+offset_right = 1093.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qbe5o")
+theme_override_font_sizes/font_size = 110
+text = "Is this claim true?"
+horizontal_alignment = 1
+
+[node name="True_Button" type="Button" parent="." unique_id=1524075729]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 800.0
+offset_right = 450.0
+offset_bottom = 1100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qbe5o")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
+text = "True"
+
+[node name="False_Button" type="Button" parent="." unique_id=287609867]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 800.0
+offset_right = 930.0
+offset_bottom = 1100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qbe5o")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_yf5fn")
+text = "False
+"
+
+[node name="Feedback" type="Label" parent="." unique_id=456287370]
+visible = false
+layout_mode = 0
+offset_top = 1111.0
+offset_right = 1080.0
+offset_bottom = 1411.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Post" type="TextureRect" parent="." unique_id=1378834153]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 200.0
+offset_right = 1040.0
+offset_bottom = 700.0
+texture = ExtResource("3_emrvn")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=682823889]
+
+[connection signal="pressed" from="True_Button" to="." method="_on_true_button_pressed"]
+[connection signal="pressed" from="False_Button" to="." method="_on_false_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
